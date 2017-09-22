@@ -1,0 +1,10 @@
+version: '2'
+services:
+  web:
+    image: janeczku/hello-world:v1.0.0
+  redis:
+    image: redis
+  loadbalancer:
+    image: rancher/lb-service-haproxy
+    ports:
+    - 81

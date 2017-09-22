@@ -1,0 +1,19 @@
+version: '2'
+services:
+  loadbalancer:
+    scale: 1
+    lb_config:
+      port_rules:
+      - source_port: 81
+        target_port: 8080
+        service: web
+    health_check:
+      port: 42
+      interval: 2000
+      unhealthy_threshold: 3
+      healthy_threshold: 2
+      response_timeout: 2000
+  web:
+    scale: 2
+  redis:
+    scale: 1
